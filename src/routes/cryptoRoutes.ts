@@ -1,14 +1,13 @@
 import express from 'express';
-import { createCrypto, getCryptos } from '../controllers/cryptoController';
-import { createCryptoDetails, getCryptoDetails } from '../controllers/cryptoDetailsController';
+import { createCryptoDetails, getCryptoDetails, fetchAllCryptoDetails,  fetchPaginatedCryptoDetails} from '../controllers/cryptoDetailsController';
 
 const router = express.Router();
 
-// Route to add a new cryptocurrency
-router.post('/cryptos', createCrypto);
+// Route to fetch paginated list of cryptocurrencies
+router.get('/cryptos', fetchAllCryptoDetails);
 
 // Route to fetch paginated list of cryptocurrencies
-router.get('/cryptos', getCryptos);
+router.get('/cryptosPage', fetchPaginatedCryptoDetails);
 
 // Route to fetch Crypto details by ID
 router.get('/cryptos/:id', getCryptoDetails);
